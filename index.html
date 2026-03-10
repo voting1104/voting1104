@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Election Portal</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- LOGIN PAGE -->
+<div id="loginSection" class="animate">
+<div style="text-align:center;font-size:50px;margin-bottom:10px;">🗳️</div>
+<h2>Election Portal</h2>
+
+<input type="text" id="loginID" placeholder="Enter Voter ID">
+<input type="password" id="loginPass" placeholder="Enter Password">
+
+<button class="btn-login" onclick="handleLogin()">Sign In to Ballot</button>
+
+<div style="text-align:center;margin-top:25px;">
+<p style="font-size:12px;color:#94a3b8;margin:0;">Authorized Portal Access</p>
+<a href="#" id="voterHelpLink" target="_blank" class="external-link">
+🌐 Visit Official Voting Website
+</a>
+</div>
+</div>
+
+
+<!-- MANAGER DASHBOARD -->
+<div id="managerDash" class="hidden animate">
+
+<h2>Admin Console</h2>
+
+<div class="manager-section">
+
+<label>1. Voting Portal Configuration</label>
+<span class="hint">Set the URL voters must click in Outlook.</span>
+
+<input type="text" id="siteUrl" placeholder="https://voting1104.github.io/voting1104/" oninput="updateLiveLinks()">
+
+<a href="#" id="previewLink" target="_blank" class="external-link">
+🔗 Click to Test Your Link
+</a>
+
+</div>
+
+
+<div class="manager-section">
+
+<label>2. Voter Authorization (Outlook Email)</label>
+
+<input type="email" id="vEmail" placeholder="Voter Email">
+
+<div style="display:flex;gap:8px;">
+
+<input type="text" id="vID" placeholder="Voter ID">
+<input type="text" id="vPass" placeholder="Password">
+
+</div>
+
+<button class="btn-outlook" onclick="registerAndSendLink()">
+📧 Generate & Send Outlook Link
+</button>
+
+</div>
+
+
+<div class="manager-section">
+
+<label>3. Candidate Standings</label>
+
+<div style="display:flex;gap:8px;margin-bottom:15px;">
+<input type="text" id="newCandName" placeholder="New Candidate Name">
+<button class="btn-add" onclick="addCandidate()">Add</button>
+</div>
+
+<div id="managerResults"></div>
+
+</div>
+
+
+<div class="manager-section">
+
+<label>4. Results Visibility</label>
+
+<button id="toggleResultsBtn" class="btn-toggle"
+onclick="toggleResultsVisibility()">
+Show Results to Voters: OFF
+</button>
+
+</div>
+
+<button class="btn-danger" onclick="resetElection()">
+⚠️ Reset All Election Data
+</button>
+
+<button class="btn-logout" onclick="logout()">
+Logout
+</button>
+
+</div>
+
+
+<!-- VOTER DASHBOARD -->
+
+<div id="voterDash" class="hidden animate">
+
+<h2>Digital Ballot</h2>
+
+<p id="voterName" style="text-align:center;"></p>
+
+<div id="voterBallot"></div>
+
+<div id="votedSuccess" class="hidden">
+
+<h2>✅ Vote Cast</h2>
+<p>Your selection has been securely recorded.</p>
+
+</div>
+
+<button class="btn-logout" onclick="logout()">Logout</button>
+
+</div>
+
+</div>
+
+<script src="./assets/script.js"></script>
+</body>
+</html>
